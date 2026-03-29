@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { AutoDetails } from '@/lib/types'
 import VehicleCard from '@/components/VehicleCard'
+import VehicleCardSkeleton from '@/components/VehicleCardSkeleton'
 import VehicleFilters from '@/components/VehicleFilters'
 
 export interface FilterState {
@@ -98,10 +99,7 @@ export default function AanbodPage() {
                 <div className="h-5 w-32 bg-surface-container rounded animate-pulse mb-4" />
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
                   {Array.from({ length: 6 }).map((_, i) => (
-                    <div
-                      key={i}
-                      className="bg-surface-container rounded-2xl aspect-[4/3] animate-pulse"
-                    />
+                    <VehicleCardSkeleton key={i} />
                   ))}
                 </div>
               </>
