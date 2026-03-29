@@ -106,21 +106,21 @@ export default async function HomePage() {
         <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
           <div className="flex flex-col items-center gap-1">
             <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7158c4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5F4066" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <p className="text-secondary font-extrabold text-xl">RDW</p>
             <p className="text-gray-400 text-xs">Erkend bedrijf</p>
           </div>
           <div className="flex flex-col items-center gap-1">
             <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7158c4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5F4066" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <p className="text-secondary font-extrabold text-xl">APK</p>
             <p className="text-gray-400 text-xs">Keuringsstation</p>
           </div>
           <div className="flex flex-col items-center gap-1">
             <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#7158c4" stroke="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#5F4066" stroke="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
             </div>
             <p className="text-secondary font-extrabold text-xl">
               {ratingStats.avg > 0 ? `${ratingStats.avg}` : '—'}
@@ -131,7 +131,7 @@ export default async function HomePage() {
           </div>
           <div className="flex flex-col items-center gap-1">
             <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7158c4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5F4066" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
             <p className="text-secondary font-extrabold text-xl">10+</p>
             <p className="text-gray-400 text-xs">Jaar ervaring</p>

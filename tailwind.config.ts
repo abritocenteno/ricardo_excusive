@@ -21,7 +21,7 @@ const config: Config = {
         'on-primary-fixed-variant':   '#454747',
         'inverse-primary':            '#5d5f5f',
 
-        'secondary':                  '#7158c4',
+        'secondary':                  '#5F4066',
         'on-secondary':               '#ffffff',
         'secondary-container':        '#2e2060',
         'on-secondary-container':     '#cabfff',
