@@ -53,7 +53,7 @@ export default async function HomePage() {
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage:
-              "url('https://images.pexels.com/photos/19163276/pexels-photo-19163276.jpeg?auto=compress&cs=tinysrgb&w=1800')",
+              "url('/images/road-track-gt-r-9-1645043420.avif')",
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
