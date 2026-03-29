@@ -65,11 +65,11 @@ export default function AanbodPage() {
   })
 
   return (
-    <div className="bg-brand-dark min-h-screen">
+    <div className="bg-surface min-h-screen">
       {/* Page header */}
-      <div className="bg-brand-navy border-b border-brand-border">
+      <div className="bg-surface-container-low border-b border-outline-variant">
         <div className="max-w-7xl mx-auto px-4 py-10">
-          <p className="text-brand-purple text-sm font-semibold uppercase tracking-wider mb-1">
+          <p className="text-secondary text-sm font-semibold uppercase tracking-wider mb-1">
             Voorraad
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-white">Ons aanbod</h1>
@@ -95,12 +95,12 @@ export default function AanbodPage() {
           <div className="flex-1">
             {loading ? (
               <>
-                <div className="h-5 w-32 bg-brand-card rounded animate-pulse mb-4" />
+                <div className="h-5 w-32 bg-surface-container rounded animate-pulse mb-4" />
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
                   {Array.from({ length: 6 }).map((_, i) => (
                     <div
                       key={i}
-                      className="bg-brand-card rounded-2xl aspect-[4/3] animate-pulse"
+                      className="bg-surface-container rounded-2xl aspect-[4/3] animate-pulse"
                     />
                   ))}
                 </div>

@@ -15,7 +15,7 @@ export default function ImageCarousel({ images, alt = 'Auto' }: ImageCarouselPro
 
   if (!images.length) {
     return (
-      <div className="aspect-video bg-[#1a1b23] rounded-xl flex items-center justify-center">
+      <div className="aspect-video bg-surface-container rounded-xl flex items-center justify-center">
         <Image src="/images/error_image.png" alt="Geen afbeelding" width={80} height={80} className="opacity-30" />
       </div>
     )
@@ -27,7 +27,7 @@ export default function ImageCarousel({ images, alt = 'Auto' }: ImageCarouselPro
   return (
     <>
       {/* Main */}
-      <div className="relative aspect-video rounded-xl overflow-hidden bg-[#1a1b23] cursor-pointer group"
+      <div className="relative aspect-video rounded-xl overflow-hidden bg-surface-container cursor-pointer group"
         onClick={() => setLightbox(true)}>
         <Image
           src={images[current]}
@@ -66,7 +66,7 @@ export default function ImageCarousel({ images, alt = 'Auto' }: ImageCarouselPro
               key={i}
               onClick={() => setCurrent(i)}
               className={`relative shrink-0 w-16 h-12 rounded-lg overflow-hidden border-2 transition-colors ${
-                i === current ? 'border-brand-purple' : 'border-transparent'
+                i === current ? 'border-secondary' : 'border-transparent'
               }`}
             >
               <Image src={img} alt={`thumb ${i + 1}`} fill className="object-cover" sizes="64px" />

@@ -19,16 +19,16 @@ export default function CarCard({ car }: CarCardProps) {
   return (
     <Link
       href={`/aanbod/${car.aanbod_id}`}
-      className="group block bg-[#1a1b23] rounded-xl overflow-hidden border border-white/5 hover:border-brand-purple/50 transition-all duration-200 hover:shadow-lg hover:shadow-brand-purple/10"
+      className="group block bg-surface-container rounded-xl overflow-hidden border border-white/5 border-t-[3px] border-t-secondary transition-all duration-300 hover:shadow-xl hover:shadow-secondary/25 hover:-translate-y-1 hover:border-secondary/40"
     >
       {/* Image */}
-      <div className="relative aspect-[16/10] overflow-hidden bg-[#0e0f14]">
+      <div className="relative aspect-[16/10] overflow-hidden bg-surface-container-lowest">
         {car.image_url ? (
           <Image
             src={car.image_url}
             alt={`${car.merk} ${car.model}`}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         ) : (
@@ -42,6 +42,10 @@ export default function CarCard({ car }: CarCardProps) {
             />
           </div>
         )}
+
+        {/* Gradient bleed from image into card body */}
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-surface-container to-transparent pointer-events-none" />
+
         {car.sold && (
           <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
             <Image
@@ -57,30 +61,31 @@ export default function CarCard({ car }: CarCardProps) {
 
       {/* Info */}
       <div className="p-4">
-        <h3 className="font-bold text-white text-base truncate">
+        <h3 className="font-bold text-white text-base truncate mb-1">
           {car.merk} {car.model}
         </h3>
-        <p className="text-brand-purple font-bold text-lg mt-1">{formattedPrice}</p>
-
-        <div className="mt-3 flex flex-wrap gap-3 text-xs text-gray-400">
-          {car.bouwjaar && (
-            <span className="flex items-center gap-1">
-              <FiCalendar size={12} />
-              {car.bouwjaar}
-            </span>
-          )}
-          {car.kmstand && (
-            <span className="flex items-center gap-1">
-              <FiActivity size={12} />
-              {formattedKm}
-            </span>
-          )}
-          {car.brandstof && (
-            <span className="flex items-center gap-1">
-              <FiDroplet size={12} />
-              {car.brandstof}
-            </span>
-          )}
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex flex-wrap gap-3 text-xs text-gray-500">
+            {car.bouwjaar && (
+              <span className="flex items-center gap-1">
+                <FiCalendar size={12} />
+                {car.bouwjaar}
+              </span>
+            )}
+            {car.kmstand && (
+              <span className="flex items-center gap-1">
+                <FiActivity size={12} />
+                {formattedKm}
+              </span>
+            )}
+            {car.brandstof && (
+              <span className="flex items-center gap-1">
+                <FiDroplet size={12} />
+                {car.brandstof}
+              </span>
+            )}
+          </div>
+          <p className="text-secondary font-black text-xl shrink-0">{formattedPrice}</p>
         </div>
       </div>
     </Link>

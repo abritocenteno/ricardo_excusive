@@ -45,7 +45,7 @@ export default function AddReview({ onAdded }: AddReviewProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-[#1a1b23] rounded-xl p-5 border border-white/5 space-y-4"
+      className="bg-surface-container rounded-xl p-5 border border-white/5 space-y-4"
     >
       <h3 className="font-semibold text-white">Schrijf een recensie</h3>
 
@@ -56,7 +56,7 @@ export default function AddReview({ onAdded }: AddReviewProps) {
           value={naam}
           onChange={(e) => setNaam(e.target.value)}
           placeholder="Uw naam"
-          className="w-full bg-[#0e0f14] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-brand-purple"
+          className="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-secondary"
         />
       </div>
 
@@ -73,7 +73,7 @@ export default function AddReview({ onAdded }: AddReviewProps) {
           placeholder="Uw ervaring..."
           rows={4}
           maxLength={500}
-          className="w-full bg-[#0e0f14] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-brand-purple resize-none"
+          className="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-secondary resize-none"
         />
         <p className="text-xs text-gray-600 text-right mt-0.5">{bericht.length}/500</p>
       </div>
@@ -84,7 +84,7 @@ export default function AddReview({ onAdded }: AddReviewProps) {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-brand-purple hover:bg-brand-accent disabled:opacity-50 text-white font-semibold py-2.5 rounded-lg transition-colors"
+        className="w-full bg-secondary hover:bg-secondary/80 disabled:opacity-50 text-white font-semibold py-2.5 rounded-lg transition-colors"
       >
         {loading ? 'Verzenden...' : 'Verzend recensie'}
       </button>

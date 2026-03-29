@@ -5,6 +5,8 @@ import { AutoDetails, Review } from '@/lib/types'
 import VehicleCard from '@/components/VehicleCard'
 import ReviewCard from '@/components/ReviewCard'
 import StarRating from '@/components/StarRating'
+import GalleryCarousel from '@/components/GalleryCarousel'
+import ReviewsCarousel from '@/components/ReviewsCarousel'
 
 async function getFeaturedVehicles(): Promise<AutoDetails[]> {
   const { data } = await supabase
@@ -21,7 +23,7 @@ async function getLatestReviews(): Promise<Review[]> {
     .from('reviews')
     .select('*')
     .order('created_at', { ascending: false })
-    .limit(3)
+    .limit(6)
   return data ?? []
 }
 
@@ -42,13 +44,13 @@ export default async function HomePage() {
   ])
 
   return (
-    <div className="bg-brand-dark">
+    <div className="bg-surface">
       {/* ── Hero ── */}
       <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
         {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-luxury" />
+        <div className="absolute inset-0 bg-surface-container-low" />
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-10"
           style={{
             backgroundImage:
               "url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1800&q=80')",
@@ -56,42 +58,42 @@ export default async function HomePage() {
             backgroundPosition: 'center',
           }}
         />
-        {/* Purple vignette */}
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-dark/60 via-transparent to-brand-dark" />
+        {/* Vignette */}
+        <div className="absolute inset-0 bg-gradient-to-b from-surface-container-low/80 via-transparent to-surface-container-low" />
 
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <Image
             src="/images/RENoBG.png"
             alt="Ricardo's Exclusive"
-            width={120}
-            height={120}
-            className="mx-auto mb-6 drop-shadow-2xl"
+            width={400}
+            height={400}
+            className="mx-auto mb-6 drop-shadow-2xl w-4/5 sm:w-[480px] h-auto"
             priority
           />
           <h1 className="text-5xl sm:text-6xl font-black text-white mb-4 tracking-tight">
             Ricardo&apos;s{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-brand-gold-light">
+            <span className="text-secondary italic">
               Exclusive
             </span>
           </h1>
-          <p className="text-purple-200 text-lg sm:text-xl mb-3 font-light">
+          <p className="text-on-surface-variant text-lg sm:text-xl mb-3 font-light">
             Automotive
           </p>
           <p className="text-gray-300 text-base sm:text-lg mb-10 max-w-2xl mx-auto">
-            Luxe occasions van topkwaliteit — APK, onderhoud &amp; persoonlijke service
+            Occasions van topkwaliteit — APK, onderhoud &amp; persoonlijke service
             in het hart van Zeeland.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/aanbod"
-              className="inline-flex items-center justify-center gap-2 bg-brand-purple hover:bg-brand-purple-light text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200 shadow-purple hover:shadow-lg hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 bg-secondary hover:bg-secondary/80 text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200 shadow-ambient hover:shadow-lg hover:-translate-y-0.5"
             >
               Bekijk aanbod
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-8 py-3.5 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 bg-secondary/20 hover:bg-secondary/40 border border-secondary/50 text-secondary font-semibold px-8 py-3.5 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
             >
               Neem contact op
             </Link>
@@ -100,27 +102,27 @@ export default async function HomePage() {
       </section>
 
       {/* ── Trust bar ── */}
-      <section className="border-y border-brand-border bg-brand-navy/80">
+      <section className="border-y border-outline-variant bg-surface-container-low/80">
         <div className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
           <div className="flex flex-col items-center gap-1">
-            <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#613F66" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7158c4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
-            <p className="text-brand-gold font-extrabold text-xl">RDW</p>
+            <p className="text-secondary font-extrabold text-xl">RDW</p>
             <p className="text-gray-400 text-xs">Erkend bedrijf</p>
           </div>
           <div className="flex flex-col items-center gap-1">
-            <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#613F66" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7158c4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
-            <p className="text-brand-gold font-extrabold text-xl">APK</p>
+            <p className="text-secondary font-extrabold text-xl">APK</p>
             <p className="text-gray-400 text-xs">Keuringsstation</p>
           </div>
           <div className="flex flex-col items-center gap-1">
-            <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#D4AF37" stroke="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
+            <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="#7158c4" stroke="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>
             </div>
-            <p className="text-brand-gold font-extrabold text-xl">
+            <p className="text-secondary font-extrabold text-xl">
               {ratingStats.avg > 0 ? `${ratingStats.avg}` : '—'}
             </p>
             <p className="text-gray-400 text-xs">
@@ -128,27 +130,30 @@ export default async function HomePage() {
             </p>
           </div>
           <div className="flex flex-col items-center gap-1">
-            <div className="w-10 h-10 rounded-full bg-brand-purple/20 flex items-center justify-center mb-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#613F66" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center mb-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7158c4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             </div>
-            <p className="text-brand-gold font-extrabold text-xl">10+</p>
+            <p className="text-secondary font-extrabold text-xl">10+</p>
             <p className="text-gray-400 text-xs">Jaar ervaring</p>
           </div>
         </div>
       </section>
 
+      {/* ── Gallery carousel ── */}
+      <GalleryCarousel />
+
       {/* ── Featured vehicles ── */}
       <section className="max-w-7xl mx-auto px-4 py-16">
         <div className="flex items-end justify-between mb-8">
           <div>
-            <p className="text-brand-purple text-sm font-semibold uppercase tracking-wider mb-1">
+            <p className="text-secondary text-sm font-semibold uppercase tracking-wider mb-1">
               Ons aanbod
             </p>
             <h2 className="text-3xl font-bold text-white">Uitgelichte voertuigen</h2>
           </div>
           <Link
             href="/aanbod"
-            className="text-sm text-brand-purple hover:text-brand-purple-light flex items-center gap-1.5 transition-colors font-medium"
+            className="text-sm text-secondary hover:text-secondary/80 flex items-center gap-1.5 transition-colors font-medium"
           >
             Alles bekijken
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -170,7 +175,7 @@ export default async function HomePage() {
 
       {/* ── RDW / Services banner ── */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-purple-dark via-brand-purple to-brand-purple-dark opacity-90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-secondary-container via-secondary to-secondary-container opacity-90" />
         <div className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")',
@@ -190,13 +195,13 @@ export default async function HomePage() {
             <h2 className="text-3xl font-bold text-white mb-3">
               Meer dan alleen autoverkoop
             </h2>
-            <p className="text-purple-100 text-lg mb-6 max-w-xl">
+            <p className="text-on-surface-variant text-lg mb-6 max-w-xl">
               Van APK-keuring tot volledig onderhoud en sleepservice. Ricardo&apos;s
               Exclusive staat altijd voor u klaar — als RDW-erkend bedrijf.
             </p>
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 bg-white text-brand-purple font-bold px-7 py-3 rounded-xl hover:bg-brand-gold hover:text-white transition-all duration-200"
+              className="inline-flex items-center gap-2 bg-white text-secondary font-bold px-7 py-3 rounded-xl hover:bg-surface-container-lowest hover:text-on-surface transition-all duration-200"
             >
               Onze services
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -210,7 +215,7 @@ export default async function HomePage() {
         <section className="max-w-7xl mx-auto px-4 py-16">
           <div className="flex items-end justify-between mb-8">
             <div>
-              <p className="text-brand-purple text-sm font-semibold uppercase tracking-wider mb-1">
+              <p className="text-secondary text-sm font-semibold uppercase tracking-wider mb-1">
                 Klantervaring
               </p>
               <h2 className="text-3xl font-bold text-white">Wat klanten zeggen</h2>
@@ -225,22 +230,20 @@ export default async function HomePage() {
             </div>
             <Link
               href="/reviews"
-              className="text-sm text-brand-purple hover:text-brand-purple-light flex items-center gap-1.5 transition-colors font-medium"
+              className="text-sm text-secondary hover:text-secondary/80 flex items-center gap-1.5 transition-colors font-medium"
             >
               Alle recensies
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </Link>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {reviews.map((r) => (
-              <ReviewCard key={r.id} review={r} />
-            ))}
+          <div className="max-w-2xl mx-auto">
+            <ReviewsCarousel reviews={reviews} />
           </div>
         </section>
       )}
 
       {/* ── CTA contact bar ── */}
-      <section className="bg-brand-navy border-t border-brand-border">
+      <section className="bg-surface-container-low border-t border-outline-variant">
         <div className="max-w-5xl mx-auto px-4 py-12 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <h2 className="text-2xl font-bold text-white mb-1">
@@ -253,7 +256,7 @@ export default async function HomePage() {
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
             <a
               href="tel:+31644922136"
-              className="inline-flex items-center justify-center gap-2 bg-brand-purple hover:bg-brand-purple-light text-white font-semibold px-6 py-3 rounded-xl transition-all"
+              className="inline-flex items-center justify-center gap-2 bg-secondary hover:bg-secondary/80 text-white font-semibold px-6 py-3 rounded-xl transition-all"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42A2 2 0 0 1 3.58 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               +31 6 44 92 21 36

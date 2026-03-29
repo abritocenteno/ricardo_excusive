@@ -25,7 +25,7 @@ export default function CarFilters({ filters, onChange, brands, fuels }: CarFilt
   }
 
   return (
-    <div className="bg-[#1a1b23] rounded-xl p-4 border border-white/5">
+    <div className="bg-surface-container rounded-xl p-4 border border-white/5">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-white font-semibold">Filters</h2>
         <button
@@ -43,7 +43,7 @@ export default function CarFilters({ filters, onChange, brands, fuels }: CarFilt
           <select
             value={filters.merk}
             onChange={(e) => update('merk', e.target.value)}
-            className="w-full bg-[#0e0f14] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-brand-purple"
+            className="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-secondary"
           >
             <option value="">Alle merken</option>
             {brands.map((b) => (
@@ -58,7 +58,7 @@ export default function CarFilters({ filters, onChange, brands, fuels }: CarFilt
           <select
             value={filters.brandstof}
             onChange={(e) => update('brandstof', e.target.value)}
-            className="w-full bg-[#0e0f14] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-brand-purple"
+            className="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-secondary"
           >
             <option value="">Alle brandstof</option>
             {fuels.map((f) => (
@@ -75,7 +75,7 @@ export default function CarFilters({ filters, onChange, brands, fuels }: CarFilt
             placeholder="2000"
             value={filters.bouwjaarMin}
             onChange={(e) => update('bouwjaarMin', e.target.value)}
-            className="w-full bg-[#0e0f14] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-brand-purple"
+            className="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-secondary"
           />
         </div>
 
@@ -87,7 +87,7 @@ export default function CarFilters({ filters, onChange, brands, fuels }: CarFilt
             placeholder={new Date().getFullYear().toString()}
             value={filters.bouwjaarMax}
             onChange={(e) => update('bouwjaarMax', e.target.value)}
-            className="w-full bg-[#0e0f14] border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-brand-purple"
+            className="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-secondary"
           />
         </div>
 
@@ -96,7 +96,7 @@ export default function CarFilters({ filters, onChange, brands, fuels }: CarFilt
           <label className="flex items-center gap-2 cursor-pointer">
             <div
               className={`w-10 h-5 rounded-full transition-colors relative ${
-                filters.showSold ? 'bg-brand-purple' : 'bg-gray-700'
+                filters.showSold ? 'bg-secondary' : 'bg-gray-700'
               }`}
               onClick={() => update('showSold', !filters.showSold)}
             >

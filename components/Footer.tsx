@@ -4,7 +4,7 @@ import { FiPhone, FiMail, FiMapPin } from 'react-icons/fi'
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0e0f14] border-t border-white/10 mt-auto">
+    <footer className="bg-surface-container-lowest border-t border-white/10 mt-auto">
       <div className="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-3 gap-8">
         {/* Brand */}
         <div className="flex flex-col gap-3">
@@ -46,17 +46,17 @@ export default function Footer() {
           <p className="text-white font-semibold mb-3">Contact</p>
           <ul className="space-y-2 text-sm text-gray-400">
             <li className="flex items-start gap-2">
-              <FiMapPin className="mt-0.5 shrink-0 text-brand-purple" />
+              <FiMapPin className="mt-0.5 shrink-0 text-secondary" />
               <span>Voederheil 9C, 5411RJ Zeeland</span>
             </li>
             <li className="flex items-center gap-2">
-              <FiPhone className="shrink-0 text-brand-purple" />
+              <FiPhone className="shrink-0 text-secondary" />
               <a href="tel:+31644922136" className="hover:text-white transition-colors">
                 +31 6 44 92 21 36
               </a>
             </li>
             <li className="flex items-center gap-2">
-              <FiMail className="shrink-0 text-brand-purple" />
+              <FiMail className="shrink-0 text-secondary" />
               <a
                 href="mailto:ricardo.exclusives@hotmail.com"
                 className="hover:text-white transition-colors"

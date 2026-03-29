@@ -19,7 +19,7 @@ export default function Navbar() {
   const pathname = usePathname()
 
   return (
-    <nav className="bg-[#0e0f14] border-b border-white/10 sticky top-0 z-50">
+    <nav className="bg-surface-container-lowest border-b border-white/10 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image
@@ -42,7 +42,7 @@ export default function Navbar() {
               href={link.href}
               className={`text-sm font-medium transition-colors ${
                 pathname === link.href
-                  ? 'text-brand-purple'
+                  ? 'text-secondary'
                   : 'text-gray-300 hover:text-white'
               }`}
             >
@@ -63,7 +63,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-[#0e0f14] border-t border-white/10 px-4 pb-4">
+        <div className="md:hidden bg-surface-container-lowest border-t border-white/10 px-4 pb-4">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -71,7 +71,7 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               className={`block py-3 text-sm font-medium border-b border-white/5 ${
                 pathname === link.href
-                  ? 'text-brand-purple'
+                  ? 'text-secondary'
                   : 'text-gray-300'
               }`}
             >

@@ -74,9 +74,9 @@ export default async function AanbodDetailPage({ params }: Props) {
   )
 
   return (
-    <div className="bg-brand-dark min-h-screen">
+    <div className="bg-surface min-h-screen">
       {/* Breadcrumb */}
-      <div className="bg-brand-navy border-b border-brand-border">
+      <div className="bg-surface-container-low border-b border-outline-variant">
         <div className="max-w-6xl mx-auto px-4 py-4">
           <Link
             href="/aanbod"
@@ -96,9 +96,9 @@ export default async function AanbodDetailPage({ params }: Props) {
 
             {/* Description */}
             {vehicle.beschrijving && (
-              <div className="mt-6 bg-brand-card rounded-2xl p-6 border border-brand-border">
+              <div className="mt-6 bg-surface-container rounded-2xl p-6 border border-outline-variant">
                 <h2 className="font-semibold text-white mb-3 flex items-center gap-2">
-                  <span className="text-brand-purple">📄</span> Beschrijving
+                  <span className="text-secondary">📄</span> Beschrijving
                 </h2>
                 <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">
                   {vehicle.beschrijving}
@@ -113,11 +113,11 @@ export default async function AanbodDetailPage({ params }: Props) {
               return (
                 <div
                   key={section.key as string}
-                  className="mt-4 bg-brand-card rounded-2xl p-6 border border-brand-border"
+                  className="mt-4 bg-surface-container rounded-2xl p-6 border border-outline-variant"
                 >
                   <h2 className="font-semibold text-white mb-4 flex items-center gap-2">
                     <span>{section.icon}</span> {section.label}
-                    <span className="ml-auto text-xs text-brand-purple font-normal">
+                    <span className="ml-auto text-xs text-secondary font-normal">
                       {options.length} opties
                     </span>
                   </h2>
@@ -127,7 +127,7 @@ export default async function AanbodDetailPage({ params }: Props) {
                         key={i}
                         className="flex items-start gap-2 text-sm text-gray-300"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#613F66" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7158c4" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
                         {opt}
                       </li>
                     ))}
@@ -140,7 +140,7 @@ export default async function AanbodDetailPage({ params }: Props) {
           {/* Right sticky card */}
           <aside className="lg:sticky lg:top-20 h-fit space-y-4">
             {/* Price & title card */}
-            <div className="bg-brand-card rounded-2xl p-6 border border-brand-border">
+            <div className="bg-surface-container rounded-2xl p-6 border border-outline-variant">
               <div className="flex items-start justify-between gap-3 mb-2">
                 <h1 className="text-2xl font-bold text-white">
                   {vehicle.merk} {vehicle.model}
@@ -152,12 +152,12 @@ export default async function AanbodDetailPage({ params }: Props) {
                 )}
               </div>
 
-              <p className="text-brand-gold font-black text-3xl mt-3">
+              <p className="text-primary font-black text-3xl mt-3">
                 {formattedPrice}
               </p>
 
               {/* Specs */}
-              <div className="mt-5 space-y-3 border-t border-brand-border pt-5">
+              <div className="mt-5 space-y-3 border-t border-outline-variant pt-5">
                 {vehicle.bouwjaar && (
                   <div className="flex items-center justify-between text-sm">
                     <span className="flex items-center gap-2 text-gray-400">
@@ -192,7 +192,7 @@ export default async function AanbodDetailPage({ params }: Props) {
                 <div className="mt-6 space-y-3">
                   <a
                     href="tel:+31644922136"
-                    className="flex items-center justify-center gap-2 w-full bg-brand-purple hover:bg-brand-purple-light text-white font-semibold py-3.5 rounded-xl transition-all duration-200 shadow-purple"
+                    className="flex items-center justify-center gap-2 w-full bg-secondary hover:bg-secondary/80 text-white font-semibold py-3.5 rounded-xl transition-all duration-200 shadow-ambient"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42A2 2 0 0 1 3.58 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     Bel ons
@@ -210,7 +210,7 @@ export default async function AanbodDetailPage({ params }: Props) {
                     href={`mailto:ricardo.exclusives@hotmail.com?subject=${encodeURIComponent(
                       `Interesse in ${vehicle.merk} ${vehicle.model}`
                     )}`}
-                    className="flex items-center justify-center gap-2 w-full bg-brand-border hover:bg-brand-card border border-brand-border text-white font-semibold py-3.5 rounded-xl transition-all duration-200"
+                    className="flex items-center justify-center gap-2 w-full bg-outline-variant hover:bg-surface-container border border-outline-variant text-white font-semibold py-3.5 rounded-xl transition-all duration-200"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                     E-mail ons
@@ -225,7 +225,7 @@ export default async function AanbodDetailPage({ params }: Props) {
                   </p>
                   <Link
                     href="/aanbod"
-                    className="mt-2 inline-block text-brand-purple hover:text-brand-purple-light text-sm transition-colors"
+                    className="mt-2 inline-block text-secondary hover:text-secondary/80 text-sm transition-colors"
                   >
                     Bekijk ons andere aanbod →
                   </Link>
@@ -234,7 +234,7 @@ export default async function AanbodDetailPage({ params }: Props) {
             </div>
 
             {/* Contact info card */}
-            <div className="bg-brand-card rounded-2xl p-5 border border-brand-border">
+            <div className="bg-surface-container rounded-2xl p-5 border border-outline-variant">
               <p className="text-xs text-gray-500 uppercase tracking-wider mb-3 font-medium">
                 Ricardo&apos;s Exclusive
               </p>
@@ -244,14 +244,14 @@ export default async function AanbodDetailPage({ params }: Props) {
                   href="tel:+31644922136"
                   className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#613F66" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42A2 2 0 0 1 3.58 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7158c4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42A2 2 0 0 1 3.58 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                   +31 6 44 92 21 36
                 </a>
                 <a
                   href="mailto:ricardo.exclusives@hotmail.com"
                   className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#613F66" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7158c4" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                   ricardo.exclusives@hotmail.com
                 </a>
               </div>
