@@ -53,7 +53,7 @@ export default async function HomePage() {
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1800&q=80')",
+              "url('https://images.pexels.com/photos/19163276/pexels-photo-19163276.jpeg?auto=compress&cs=tinysrgb&w=1800')",
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
