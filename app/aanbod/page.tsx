@@ -15,9 +15,37 @@ export interface FilterState {
   showSold: boolean
 }
 
+type SortKey = 'merk_asc' | 'prijs_asc' | 'prijs_desc' | 'bouwjaar_desc' | 'bouwjaar_asc'
+
+const SORT_OPTIONS: { value: SortKey; label: string }[] = [
+  { value: 'merk_asc',      label: 'Merk (A–Z)' },
+  { value: 'prijs_asc',     label: 'Prijs (laag–hoog)' },
+  { value: 'prijs_desc',    label: 'Prijs (hoog–laag)' },
+  { value: 'bouwjaar_desc', label: 'Bouwjaar (nieuw–oud)' },
+  { value: 'bouwjaar_asc',  label: 'Bouwjaar (oud–nieuw)' },
+]
+
+function sortVehicles(vehicles: AutoDetails[], key: SortKey): AutoDetails[] {
+  return [...vehicles].sort((a, b) => {
+    switch (key) {
+      case 'merk_asc':
+        return (a.merk ?? '').localeCompare(b.merk ?? '')
+      case 'prijs_asc':
+        return (a.vraagprijs ?? 0) - (b.vraagprijs ?? 0)
+      case 'prijs_desc':
+        return (b.vraagprijs ?? 0) - (a.vraagprijs ?? 0)
+      case 'bouwjaar_desc':
+        return parseInt(b.bouwjaar ?? '0') - parseInt(a.bouwjaar ?? '0')
+      case 'bouwjaar_asc':
+        return parseInt(a.bouwjaar ?? '0') - parseInt(b.bouwjaar ?? '0')
+    }
+  })
+}
+
 export default function AanbodPage() {
   const [vehicles, setVehicles] = useState<AutoDetails[]>([])
   const [loading, setLoading] = useState(true)
+  const [sortKey, setSortKey] = useState<SortKey>('merk_asc')
   const [filters, setFilters] = useState<FilterState>({
     merk: '',
     brandstof: '',
@@ -64,6 +92,8 @@ export default function AanbodPage() {
       return false
     return true
   })
+
+  const sorted = sortVehicles(filtered, sortKey)
 
   return (
     <div className="bg-surface min-h-screen">
@@ -115,12 +145,22 @@ export default function AanbodPage() {
               </div>
             ) : (
               <>
-                <p className="text-gray-500 text-sm mb-5">
-                  {filtered.length} voertuig
-                  {filtered.length !== 1 ? 'en' : ''} gevonden
-                </p>
+                <div className="flex items-center justify-between gap-4 mb-5">
+                  <p className="text-gray-500 text-sm">
+                    {filtered.length} voertuig{filtered.length !== 1 ? 'en' : ''} gevonden
+                  </p>
+                  <select
+                    value={sortKey}
+                    onChange={(e) => setSortKey(e.target.value as SortKey)}
+                    className="bg-surface-container border border-white/10 text-sm text-white rounded-lg px-3 py-1.5 focus:outline-none focus:border-secondary cursor-pointer"
+                  >
+                    {SORT_OPTIONS.map((o) => (
+                      <option key={o.value} value={o.value}>{o.label}</option>
+                    ))}
+                  </select>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-                  {filtered.map((vehicle) => (
+                  {sorted.map((vehicle) => (
                     <VehicleCard key={vehicle.id} vehicle={vehicle} />
                   ))}
                 </div>

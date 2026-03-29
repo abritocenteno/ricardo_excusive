@@ -13,7 +13,7 @@ async function getFeaturedVehicles(): Promise<AutoDetails[]> {
     .from('auto_details')
     .select('*')
     .eq('sold', false)
-    .order('created_at', { ascending: false })
+    .order('merk', { ascending: true })
     .limit(6)
   return data ?? []
 }
