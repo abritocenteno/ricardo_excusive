@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { supabase } from '@/lib/supabase'
 import { AutoDetails } from '@/lib/types'
 import VehicleCard from '@/components/VehicleCard'
@@ -102,7 +103,17 @@ export default function AanbodPage() {
   const sorted = sortVehicles(filtered, sortKey)
 
   return (
-    <div className="bg-surface min-h-screen">
+    <div className="relative bg-surface min-h-screen">
+      {/* ── Subtle full-page background ── */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <Image
+          src="/images/WhatsApp_Image_2025-09-13_at_17.40.14_(1).jpeg"
+          alt=""
+          fill
+          className="object-cover object-center opacity-[0.07]"
+        />
+      </div>
+      <div className="relative z-10">
       {/* Page header */}
       <div className="bg-surface-container-low border-b border-outline-variant">
         <div className="max-w-7xl mx-auto px-4 py-10">
@@ -175,6 +186,7 @@ export default function AanbodPage() {
             )}
           </div>
         </div>
+      </div>
       </div>
     </div>
   )

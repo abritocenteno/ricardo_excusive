@@ -49,6 +49,10 @@ export default function Footer() {
               <FiMapPin className="mt-0.5 shrink-0 text-secondary" />
               <span>Voederheil 9C, 5411RJ Zeeland</span>
             </li>
+            <li className="flex items-start gap-2">
+              <FiMapPin className="mt-0.5 shrink-0 text-secondary" />
+              <span>Koperslagerstraat 23a, 5405 BS Uden</span>
+            </li>
             <li className="flex items-center gap-2">
               <FiPhone className="shrink-0 text-secondary" />
               <a href="tel:+31644922136" className="hover:text-white transition-colors">

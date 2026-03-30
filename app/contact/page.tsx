@@ -8,12 +8,23 @@ import { FiMail, FiSend } from 'react-icons/fi'
 const contactItems = [
   {
     Icon: TbMapPin,
-    label: 'Adres',
+    label: 'Zeeland',
     content: (
       <p className="text-gray-400 text-sm leading-relaxed">
         Ricardo&apos;s Exclusive Automotive<br />
         Voederheil 9C<br />
         5411RJ Zeeland
+      </p>
+    ),
+  },
+  {
+    Icon: TbMapPin,
+    label: 'Uden',
+    content: (
+      <p className="text-gray-400 text-sm leading-relaxed">
+        Ricardo&apos;s Exclusive Automotive<br />
+        Koperslagerstraat 23a<br />
+        5405 BS Uden
       </p>
     ),
   },
