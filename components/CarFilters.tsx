@@ -6,6 +6,7 @@ interface FilterState {
   bouwjaarMin: string
   bouwjaarMax: string
   showSold: boolean
+  locatie: string
 }
 
 interface CarFiltersProps {
@@ -13,15 +14,16 @@ interface CarFiltersProps {
   onChange: (filters: FilterState) => void
   brands: string[]
   fuels: string[]
+  locations: string[]
 }
 
-export default function CarFilters({ filters, onChange, brands, fuels }: CarFiltersProps) {
+export default function CarFilters({ filters, onChange, brands, fuels, locations }: CarFiltersProps) {
   function update(key: keyof FilterState, value: string | boolean) {
     onChange({ ...filters, [key]: value })
   }
 
   function reset() {
-    onChange({ merk: '', brandstof: '', bouwjaarMin: '', bouwjaarMax: '', showSold: false })
+    onChange({ merk: '', brandstof: '', bouwjaarMin: '', bouwjaarMax: '', showSold: false, locatie: '' })
   }
 
   return (
@@ -66,6 +68,23 @@ export default function CarFilters({ filters, onChange, brands, fuels }: CarFilt
             ))}
           </select>
         </div>
+
+        {/* Locatie */}
+        {locations.length > 0 && (
+          <div>
+            <label className="block text-xs text-gray-400 mb-1">Locatie</label>
+            <select
+              value={filters.locatie}
+              onChange={(e) => update('locatie', e.target.value)}
+              className="w-full bg-surface-container-lowest border border-white/10 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-secondary"
+            >
+              <option value="">Alle locaties</option>
+              {locations.map((l) => (
+                <option key={l} value={l}>{l}</option>
+              ))}
+            </select>
+          </div>
+        )}
 
         {/* Bouwjaar min */}
         <div>

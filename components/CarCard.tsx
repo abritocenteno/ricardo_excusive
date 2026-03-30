@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { AutoDetails } from '@/lib/types'
-import { FiDroplet, FiCalendar, FiActivity } from 'react-icons/fi'
+import { FiDroplet, FiCalendar, FiActivity, FiMapPin } from 'react-icons/fi'
 
 interface CarCardProps {
   car: AutoDetails
@@ -82,6 +82,12 @@ export default function CarCard({ car }: CarCardProps) {
               <span className="flex items-center gap-1">
                 <FiDroplet size={12} />
                 {car.brandstof}
+              </span>
+            )}
+            {car.locatie && (
+              <span className="flex items-center gap-1">
+                <FiMapPin size={12} />
+                {car.locatie}
               </span>
             )}
           </div>

@@ -13,6 +13,7 @@ export interface FilterState {
   bouwjaarMin: string
   bouwjaarMax: string
   showSold: boolean
+  locatie: string
 }
 
 type SortKey = 'merk_asc' | 'prijs_asc' | 'prijs_desc' | 'bouwjaar_desc' | 'bouwjaar_asc'
@@ -52,6 +53,7 @@ export default function AanbodPage() {
     bouwjaarMin: '',
     bouwjaarMax: '',
     showSold: false,
+    locatie: '',
   })
 
   useEffect(() => {
@@ -73,11 +75,15 @@ export default function AanbodPage() {
   const fuels = Array.from(
     new Set(vehicles.map((v) => v.brandstof).filter(Boolean) as string[])
   ).sort()
+  const locations = Array.from(
+    new Set(vehicles.map((v) => v.locatie).filter(Boolean) as string[])
+  ).sort()
 
   const filtered = vehicles.filter((v) => {
     if (!filters.showSold && v.sold) return false
     if (filters.merk && v.merk !== filters.merk) return false
     if (filters.brandstof && v.brandstof !== filters.brandstof) return false
+    if (filters.locatie && v.locatie !== filters.locatie) return false
     if (
       filters.bouwjaarMin &&
       v.bouwjaar &&
@@ -119,6 +125,7 @@ export default function AanbodPage() {
               onChange={setFilters}
               brands={brands}
               fuels={fuels}
+              locations={locations}
             />
           </aside>
 

@@ -27,6 +27,7 @@ export interface AutoDetails {
   optiesVeiligheid: string[]
   optiesMotor: string[]
   sold: boolean | null
+  locatie: string | null
 }
 
 export interface AanbodImages {
