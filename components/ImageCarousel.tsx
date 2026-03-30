@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import Image from 'next/image'
 import { FiChevronLeft, FiChevronRight, FiX } from 'react-icons/fi'
 
@@ -21,14 +21,31 @@ export default function ImageCarousel({ images, alt = 'Auto' }: ImageCarouselPro
     )
   }
 
+  const touchStartX = useRef<number | null>(null)
+
   const prev = () => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1))
   const next = () => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1))
+
+  function handleTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  function handleTouchEnd(e: React.TouchEvent) {
+    if (touchStartX.current === null) return
+    const delta = touchStartX.current - e.changedTouches[0].clientX
+    if (Math.abs(delta) > 50) delta > 0 ? next() : prev()
+    touchStartX.current = null
+  }
 
   return (
     <>
       {/* Main */}
-      <div className="relative aspect-video rounded-xl overflow-hidden bg-surface-container cursor-pointer group"
-        onClick={() => setLightbox(true)}>
+      <div
+        className="relative aspect-video rounded-xl overflow-hidden bg-surface-container cursor-pointer group"
+        onClick={() => setLightbox(true)}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <Image
           src={images[current]}
           alt={`${alt} ${current + 1}`}
@@ -106,6 +123,8 @@ export default function ImageCarousel({ images, alt = 'Auto' }: ImageCarouselPro
           <div
             className="relative max-w-4xl w-full mx-8 aspect-video"
             onClick={(e) => e.stopPropagation()}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={(e) => { e.stopPropagation(); handleTouchEnd(e) }}
           >
             <Image
               src={images[current]}
